@@ -20,7 +20,7 @@ Built with a sleek, responsive holographic glassmorphism UI, this system provide
 * **Frontend:** HTML5, CSS3 (CSS Variables for Theming), Vanilla JavaScript
 * **Security:** Werkzeug Password Hashing
 
----
+
 ## 🚀 Setup & Installation
 
 Follow these steps to get the Campus Resource Management System (CRMS) running on your local machine.
@@ -34,6 +34,7 @@ Open your terminal or command prompt inside the project folder and run the follo
 
 ```bash
 pip install Flask Flask-MySQLdb Werkzeug
+---
 
 
 ## 🗄️ Database Structure (MySQL)
