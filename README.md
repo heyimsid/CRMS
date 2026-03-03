@@ -190,3 +190,16 @@ CREATE TABLE issues (
     FOREIGN KEY (department_id) REFERENCES department(department_id)
 );
 
+## 🚀 Setup & Installation
+
+Follow these steps to get the Campus Resource Management System (CRMS) running on your local machine.
+
+### 1. Prerequisites
+* **Python 3.x** installed on your system.
+* **MySQL Server** installed and running locally.
+
+### 2. Install Dependencies
+Open your terminal or command prompt inside the project folder and run the following command to install the required Python libraries:
+
+```bash
+pip install Flask Flask-MySQLdb Werkzeug
