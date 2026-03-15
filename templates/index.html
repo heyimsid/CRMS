@@ -1,132 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRMS | Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/static/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS — Campus Resource Management</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <div class="flash-container">
-        {% for category, message in messages %}
-          <div class="flash-toast {{ category }}">{{ message }}</div>
-        {% endfor %}
-        </div>
-      {% endif %}
-    {% endwith %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  <div class="flash-container">
+  {% for category, message in messages %}
+    <div class="flash-toast {{ category }}">{{ message }}</div>
+  {% endfor %}
+  </div>
+{% endif %}
+{% endwith %}
 
-    <nav class="navbar">
-        <div class="logo">CRMS<span class="dot">.</span></div>
-        <ul class="nav-links">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#resources">Resources</a></li>
-        </ul>
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <button id="themeToggle" class="btn-theme"><i class="fa-solid fa-moon"></i></button>
-            <button class="btn-login" id="loginBtn">Login</button>
-        </div>
-    </nav>
+<!-- ═══ NAVBAR ═══ -->
+<nav class="land-nav">
+  <div class="land-logo">NEXUS<span class="dot">·</span></div>
+  <div class="land-nav-links">
+    <a href="#home"     class="land-nav-link">Home</a>
+    <a href="#features" class="land-nav-link">Features</a>
+  </div>
+  <div class="land-nav-right">
+    <button id="themeToggle" class="btn btn-icon round" title="Toggle theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+    <button id="openSignIn" class="btn btn-dark btn-sm">Sign in</button>
+    <button id="openRegister" class="btn btn-v btn-sm">Get Started</button>
+  </div>
+</nav>
 
-    <header id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Campus Resource <br> <span class="accent-text">Management System</span></h1>
-            <p class="hero-subtitle">Easily book labs, borrow equipment, and track campus resources from one central platform.</p>
-            <div class="cta-group">
-                <button class="btn-primary" id="heroLoginBtn">Get Started <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
-    </header>
+<!-- ═══ HERO ═══ -->
+<section id="home" class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="hero-eye-dot"></span>
+      Campus Resource System
+    </div>
+    <h1 class="hero-h1">
+      Book. Manage.<br>
+      <span class="grad">Control everything.</span>
+    </h1>
+    <p class="hero-body">
+      A unified platform for students, staff, and administrators to reserve labs, equipment, and venues — with real-time schedules, role-based approvals, and instant notifications.
+    </p>
+    <div class="hero-actions">
+      <button id="heroGetStarted" class="btn btn-v">
+        Get Started &nbsp;<i class="fa-solid fa-arrow-right"></i>
+      </button>
+      <a href="#features" class="btn btn-ghost">Explore features</a>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-pill"><i class="fa-solid fa-check-circle"></i> Instant booking</div>
+      <div class="proof-pill"><i class="fa-solid fa-check-circle"></i> Conflict detection</div>
+      <div class="proof-pill"><i class="fa-solid fa-check-circle"></i> Multi-role approvals</div>
+    </div>
+  </div>
 
-    <section id="resources" style="padding: 100px 5%; max-width: 1600px; margin: 0 auto; min-height: 80vh;">
-        <div style="text-align: center; margin-bottom: 60px;">
-            <h2 style="font-size: 2.5rem; font-weight: 600;">Available <span class="accent-text">Resources</span></h2>
-            <p style="color: var(--text-muted); margin-top: 10px;">Everything you need for your academics and projects.</p>
-        </div>
-        
-        <div class="grid-layout" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-            <div class="glass-card" style="text-align: center; padding: 50px 30px;">
-                <i class="fa-solid fa-computer" style="font-size: 3.5rem; color: var(--accent-cyan); margin-bottom: 25px;"></i>
-                <h3>Computer Labs</h3>
-                <p style="color: var(--text-muted); margin-top: 15px; font-size: 0.95rem;">High-performance systems equipped with the latest software for programming and design.</p>
-            </div>
-            <div class="glass-card" style="text-align: center; padding: 50px 30px;">
-                <i class="fa-solid fa-video" style="font-size: 3.5rem; color: var(--accent-purple); margin-bottom: 25px;"></i>
-                <h3>A/V Equipment</h3>
-                <p style="color: var(--text-muted); margin-top: 15px; font-size: 0.95rem;">Projectors, smart boards, and audio systems for flawless presentations and events.</p>
-            </div>
-            <div class="glass-card" style="text-align: center; padding: 50px 30px;">
-                <i class="fa-solid fa-users-rectangle" style="font-size: 3.5rem; color: var(--accent-cyan); margin-bottom: 25px;"></i>
-                <h3>Seminar Halls</h3>
-                <p style="color: var(--text-muted); margin-top: 15px; font-size: 0.95rem;">Spacious venues perfectly suited for guest lectures, club meetings, and workshops.</p>
-            </div>
-        </div>
-    </section>
+  <!-- HERO VISUAL -->
+  <div class="hero-visual">
+    <div class="hero-img-card">
+      <!-- Premium campus illustration using a real Unsplash image -->
+      <img
+       src="/static/college.jpg"
+        alt="Modern university campus building"
+        loading="lazy"
+      >
+    </div>
+    <!-- Mini status card overlay -->
+    <div class="hero-img-mini">
+      <div class="hero-img-mini-label">Live Status</div>
+      <div class="hero-mini-row">
+        <span class="hero-mini-dot ok"></span>
+        <span class="hero-mini-text">Lab 404</span>
+        <span class="hero-mini-val">Available</span>
+      </div>
+      <div class="hero-mini-row">
+        <span class="hero-mini-dot warn"></span>
+        <span class="hero-mini-text">Seminar Hall A</span>
+        <span class="hero-mini-val">Pending</span>
+      </div>
+      <div class="hero-mini-row">
+        <span class="hero-mini-dot err"></span>
+        <span class="hero-mini-text">AV Room</span>
+        <span class="hero-mini-val">Booked</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="modal-overlay" id="authModal">
-        <div class="modal-glass" style="max-width: 420px;">
-            <button class="close-btn" id="closeAuth">&times;</button>
-            
-            <div id="loginView">
-                <h2>Login</h2>
-                <form action="/login" method="POST">
-                    <div class="input-group">
-                        <label>Email Address</label>
-                        <input type="email" name="email" placeholder="student@college.edu" required>
-                    </div>
-                    <div class="input-group">
-                        <label>Password</label>
-                        <input type="password" name="password" placeholder="••••••••" required>
-                    </div>
-                    <button type="submit" class="btn-primary full-width">Login</button>
-                    <div class="auth-toggle">
-                        <p>Don't have an account? <span id="toRegister">Register here</span></p>
-                    </div>
-                </form>
-            </div>
+<!-- ═══ FEATURES ═══ -->
+<section id="features" class="feat-strip">
+  <div class="feat-top">
+    <span class="eyebrow">What's inside</span>
+    <h2 class="section-title">Everything your campus needs</h2>
+    <p class="section-sub">One platform. Every resource. Total clarity.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-ico" style="background:var(--v-dim);color:var(--v-2);">
+        <i class="fa-solid fa-computer"></i>
+      </div>
+      <h3>Computer Labs</h3>
+      <p>Reserve high-performance workstations for programming, design, and research projects.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-ico" style="background:var(--c-dim);color:var(--c);">
+        <i class="fa-solid fa-video"></i>
+      </div>
+      <h3>A/V Equipment</h3>
+      <p>Book projectors, smart boards, and audio systems for presentations and campus events.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-ico" style="background:var(--ok-bg);color:var(--ok);">
+        <i class="fa-solid fa-users-rectangle"></i>
+      </div>
+      <h3>Seminar Halls</h3>
+      <p>Reserve spacious venues for lectures, workshops, club meetings, and collaborations.</p>
+    </div>
+  </div>
+</section>
 
-            <div id="registerView" style="display: none;">
-                <h2>Register</h2>
-                <form action="/register" method="POST">
-                    <div class="input-group">
-                        <label>Full Name</label>
-                        <input type="text" name="name" placeholder="John Doe" required>
-                    </div>
-                    <div class="input-group">
-                        <label>Department</label>
-                        <select name="department" class="premium-select" required>
-                            <option value="" disabled selected>Select Department</option>
-                            <option value="Artificial Intelligence">Artificial Intelligence</option>
-                            <option value="Civil Engineering">Civil Engineering</option>
-                            <option value="Computer Science">Computer Science</option>
-                            <option value="Data Science">Data Science</option>
-                            <option value="Electrical Engineering">Electrical Engineering</option>
-                            <option value="Electronics and Communication">Electronics and Communication</option>
-                            <option value="Information Technology">Information Technology</option>
-                            <option value="Mechanical Engineering">Mechanical Engineering</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label>Email Address</label>
-                        <input type="email" name="email" placeholder="student@college.edu" required>
-                    </div>
-                    <div class="input-group">
-                        <label>Password</label>
-                        <input type="password" name="password" placeholder="••••••••" required>
-                    </div>
-                    <button type="submit" class="btn-primary full-width">Create Account</button>
-                    <div class="auth-toggle">
-                        <p>Already have an account? <span id="toLogin">Login here</span></p>
-                    </div>
-                </form>
-            </div>
+<footer class="site-footer">&copy; 2025 NEXUS — Campus Resource Management System</footer>
+
+<!-- ══════════════════════════════
+     AUTH MODAL  (Sign In / Register / Forgot / OTP)
+══════════════════════════════════ -->
+<div class="modal-backdrop" id="authModal">
+  <div class="modal">
+    <button class="modal-close" id="closeAuth">&#x2715;</button>
+
+    <!-- ─── SIGN IN ─── -->
+    <div id="view-login">
+      <p class="modal-logo-text">NEXUS</p>
+      <h2 class="modal-title">Welcome back</h2>
+      <p class="modal-sub">Sign in to manage your campus resources.</p>
+      <form action="/login" method="POST">
+        <div class="field">
+          <label>Email Address</label>
+          <input type="email" name="email" class="input" placeholder="you@college.edu" required>
         </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" name="password" class="input" placeholder="••••••••" required>
+        </div>
+        <div style="text-align:right;margin-top:-6px;margin-bottom:14px;">
+          <span class="form-link" id="toForgot">Forgot password?</span>
+        </div>
+        <button type="submit" class="btn btn-v" style="width:100%;justify-content:center;">
+          Sign In &nbsp;<i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+      <div class="auth-switch">No account? <span id="toRegister">Create one</span></div>
     </div>
 
-    <script src="/static/script.js"></script>
+    <!-- ─── REGISTER ─── -->
+    <div id="view-register" style="display:none;">
+      <p class="modal-logo-text">NEXUS</p>
+      <h2 class="modal-title">Create account</h2>
+      <p class="modal-sub">Join your campus platform today.</p>
+      <form action="/register" method="POST">
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" name="name" class="input" placeholder="Your full name" required>
+        </div>
+        <div class="field">
+          <label>Department</label>
+          <select name="department" class="select" required>
+            <option value="" disabled selected>Select department</option>
+            <option>Artificial Intelligence</option>
+            <option>Civil Engineering</option>
+            <option>Computer Science</option>
+            <option>Data Science</option>
+            <option>Electrical Engineering</option>
+            <option>Electronics and Communication</option>
+            <option>Information Technology</option>
+            <option>Mechanical Engineering</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Email Address</label>
+          <input type="email" name="email" class="input" placeholder="you@college.edu" required>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" name="password" class="input" placeholder="Min 8 characters" required>
+        </div>
+        <button type="submit" class="btn btn-v" style="width:100%;justify-content:center;margin-top:4px;">
+          Create Account &nbsp;<i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+      <div class="auth-switch">Already have an account? <span id="toLogin">Sign in</span></div>
+    </div>
+
+    <!-- ─── FORGOT PASSWORD ─── -->
+    <div id="view-forgot" style="display:none;">
+      <p class="modal-logo-text">NEXUS</p>
+      <h2 class="modal-title">Reset password</h2>
+      <p class="modal-sub">Enter your college email — we'll send a 6-digit OTP to verify you.</p>
+      <form action="/forgot_password" method="POST" id="forgotForm">
+        <div class="field">
+          <label>Email Address</label>
+          <input type="email" name="email" class="input" placeholder="you@college.edu" required>
+        </div>
+        <button type="submit" class="btn btn-v" style="width:100%;justify-content:center;">
+          Send OTP &nbsp;<i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+      <div class="modal-divider">or</div>
+      <div class="auth-switch"><span id="backToLogin">← Back to Sign In</span></div>
+    </div>
+
+    <!-- ─── OTP VERIFY ─── -->
+    <div id="view-otp" style="display:none;">
+      <p class="modal-logo-text">NEXUS</p>
+      <h2 class="modal-title">Enter OTP</h2>
+      <p class="modal-sub" id="otp-sub-text">We sent a 6-digit code to your email.</p>
+      <form action="/verify_otp" method="POST" id="otpForm">
+        <input type="hidden" name="email" id="otp-email-hidden">
+        <div class="otp-row">
+          <input type="text" maxlength="1" class="otp-box" data-idx="0" inputmode="numeric" pattern="[0-9]">
+          <input type="text" maxlength="1" class="otp-box" data-idx="1" inputmode="numeric" pattern="[0-9]">
+          <input type="text" maxlength="1" class="otp-box" data-idx="2" inputmode="numeric" pattern="[0-9]">
+          <input type="text" maxlength="1" class="otp-box" data-idx="3" inputmode="numeric" pattern="[0-9]">
+          <input type="text" maxlength="1" class="otp-box" data-idx="4" inputmode="numeric" pattern="[0-9]">
+          <input type="text" maxlength="1" class="otp-box" data-idx="5" inputmode="numeric" pattern="[0-9]">
+        </div>
+        <input type="hidden" name="otp" id="otp-combined">
+        <button type="submit" class="btn btn-v" style="width:100%;justify-content:center;margin-top:12px;">
+          Verify OTP &nbsp;<i class="fa-solid fa-shield-check"></i>
+        </button>
+      </form>
+      <div class="auth-switch" style="margin-top:14px;">
+        Didn't receive it? <span id="resendOtp">Resend OTP</span>
+      </div>
+    </div>
+
+    <!-- ─── RESET PASSWORD ─── -->
+    <div id="view-reset" style="display:none;">
+      <p class="modal-logo-text">NEXUS</p>
+      <h2 class="modal-title">New password</h2>
+      <p class="modal-sub">OTP verified. Set your new password below.</p>
+      <form action="/reset_password" method="POST">
+        <input type="hidden" name="email" id="reset-email-hidden">
+        <div class="field">
+          <label>New Password</label>
+          <input type="password" name="new_password" class="input" placeholder="Min 8 characters" required>
+        </div>
+        <div class="field">
+          <label>Confirm New Password</label>
+          <input type="password" name="confirm_password" class="input" placeholder="Repeat password" required>
+        </div>
+        <button type="submit" class="btn btn-v" style="width:100%;justify-content:center;">
+          Reset Password &nbsp;<i class="fa-solid fa-lock"></i>
+        </button>
+      </form>
+    </div>
+
+  </div><!-- /modal -->
+</div><!-- /backdrop -->
+
+<script src="/static/script.js"></script>
 </body>
 </html>
